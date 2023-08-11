@@ -1,6 +1,19 @@
+import type { DataFunctionArgs } from "@remix-run/node";
+import { json } from "@remix-run/node";
+import { useLoaderData } from "@remix-run/react";
+import { fetcher } from "~/api/fetcher";
+import type { PokemonResultDto } from "~/api/pokeApi";
 import { PokeList } from "~/components/poke-list/PokeList";
-import { pokemonList } from "~/mockData/list";
+
+export async function loader(_: DataFunctionArgs) {
+  const pokemonList = await fetcher<PokemonResultDto>(
+    "https://pokeapi.co/api/v2/pokemon?limit=1000",
+  );
+
+  return json(pokemonList);
+}
 
 export default function ListPage() {
+  const pokemonList = useLoaderData<typeof loader>();
   return <PokeList pokemons={pokemonList.results} />;
 }
