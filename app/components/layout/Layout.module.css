@@ -2,6 +2,8 @@
   padding: 0 var(--poke-spacing-4);
 
   & header {
+    display: flex;
+    justify-content: space-between;
     padding: var(--poke-spacing-4) 0;
   }
 
