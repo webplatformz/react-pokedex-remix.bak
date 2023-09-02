@@ -1,5 +1,5 @@
-import { redirect, type DataFunctionArgs } from "@remix-run/node";
+import { redirect } from "@remix-run/node";
 
-export function loader(_: DataFunctionArgs) {
+export function loader() {
   return redirect("pokemon");
 }
