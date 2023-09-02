@@ -1,9 +1,9 @@
-import type { DataFunctionArgs } from "@remix-run/node";
+import type { ActionArgs } from "@remix-run/node";
 import { redirect } from "@remix-run/node";
 import { Profile } from "~/components/profile/Profile";
 import { commitSession, getSession } from "~/sessions";
 
-export async function action({ request }: DataFunctionArgs) {
+export async function action({ request }: ActionArgs) {
   const session = await getSession(request.headers.get("Cookie"));
 
   const form = await request.formData();

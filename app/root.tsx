@@ -1,9 +1,5 @@
 import { cssBundleHref } from "@remix-run/css-bundle";
-import {
-  json,
-  type DataFunctionArgs,
-  type LinksFunction,
-} from "@remix-run/node";
+import { json, type LoaderArgs, type LinksFunction } from "@remix-run/node";
 import {
   Links,
   LiveReload,
@@ -21,7 +17,7 @@ export const links: LinksFunction = () => [
   ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
 ];
 
-export async function loader({ request }: DataFunctionArgs) {
+export async function loader({ request }: LoaderArgs) {
   const session = await getSession(request.headers.get("Cookie"));
 
   return json({ username: session.get("name") });
