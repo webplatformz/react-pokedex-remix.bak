@@ -11,7 +11,7 @@ const { getSession, commitSession, destroySession } =
       name: "__session",
       domain: "localhost",
       httpOnly: true,
-      maxAge: 60 * 60 * 24, // cookies lives for 24 hours
+      maxAge: 60 * 60 * 24, // cookie lives for 24 hours
       path: "/",
       sameSite: "lax",
       secrets: ["s3cret1"],
