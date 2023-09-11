@@ -1,10 +1,10 @@
-import type { DataFunctionArgs } from "@remix-run/node";
+import type { LoaderArgs } from "@remix-run/node";
 import { json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import { fetcher } from "~/api/fetcher";
 import type { PokemonDetailDto } from "~/api/pokeApi";
 
-export async function loader({ params }: DataFunctionArgs) {
+export async function loader({ params }: LoaderArgs) {
   const pokemonDetail = await fetcher<PokemonDetailDto>(
     `https://pokeapi.co/api/v2/pokemon/${params.pokemonName}`,
   );
