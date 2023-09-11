@@ -2,7 +2,7 @@ import { useParams } from "@remix-run/react";
 import { pokeDetails } from "~/mockData/details";
 
 export default function DetailPage() {
-  const { pokemonName } = useParams();
+  const { pokemonName } = useParams<"pokemonName">();
 
   const pokemon = pokeDetails.find((p) => p.name === pokemonName);
 
