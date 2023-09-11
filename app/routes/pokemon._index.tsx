@@ -9,10 +9,10 @@ export async function loader() {
     "https://pokeapi.co/api/v2/pokemon?limit=1000",
   );
 
-  return json(pokemonList);
+  return json(pokemonList.results.map((p) => p.name));
 }
 
 export default function ListPage() {
-  const pokemonList = useLoaderData<typeof loader>();
-  return <PokeList pokemons={pokemonList.results} />;
+  const pokemons = useLoaderData<typeof loader>();
+  return <PokeList pokemons={pokemons} />;
 }

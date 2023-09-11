@@ -2,7 +2,7 @@ import { PokeListEntry } from "../poke-list-entry/PokeListEntry";
 import styles from "./PokeList.module.css";
 
 interface Props {
-  pokemons: { name: string }[];
+  pokemons: string[];
 }
 
 export function PokeList({ pokemons }: Props) {
@@ -10,7 +10,7 @@ export function PokeList({ pokemons }: Props) {
     <div className={styles.root}>
       <ul>
         {pokemons.map((pokemon) => (
-          <PokeListEntry key={pokemon.name} name={pokemon.name} />
+          <PokeListEntry key={pokemon} name={pokemon} />
         ))}
       </ul>
     </div>

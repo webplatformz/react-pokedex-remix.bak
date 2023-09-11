@@ -9,7 +9,10 @@ export async function loader({ params }: LoaderArgs) {
     `https://pokeapi.co/api/v2/pokemon/${params.pokemonName}`,
   );
 
-  return json(pokemonDetail);
+  return json({
+    name: pokemonDetail.name,
+    imageUrl: pokemonDetail.sprites.front_shiny,
+  });
 }
 
 export default function DetailPage() {
@@ -17,7 +20,7 @@ export default function DetailPage() {
   return (
     <div>
       <span>{pokemonDetail.name}</span>
-      <img src={pokemonDetail.sprites.front_shiny} alt={pokemonDetail.name} />
+      <img src={pokemonDetail.imageUrl} alt={pokemonDetail.name} />
     </div>
   );
 }
